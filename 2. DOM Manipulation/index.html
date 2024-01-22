@@ -29,33 +29,73 @@
         // Resource: https://youtu.be/5fb2aPlgoys?si=oOB2OYliN078Ensg
         //          - see first 30 minutes of the video
 
-        // Todo 2.1 Select the unordered list with the id "subjects-taken"
+        // DONE 2.1 Select the unordered list with the id "subjects-taken"
         // Resource: https://dev.to/alternate_robot/dom-selectors-in-javascript-344i
 
-        // Checkpoint 2.1 What are the other ways to select elements in the DOM?
-        // Answer:
+        const subjectsTakenList = document.getElementById("subjects-taken");
 
-        // Todo 2.2 Set the text of the second list item to "IT102 - Python Fundamentals"
+
+        // DONE Checkpoint 2.1 What are the other ways to select elements in the DOM?
+        // Answer: 
+        // Other methods to select elements in the DOM include getElementsByClassName for class names, getElementsByTagName for HTML
+        // tag names, querySelector for the first matching CSS selector, querySelectorAll for all matching selectors, and getElementsByName
+        // for elements with a specific name attribute.
+
+        // Example for querySelector: const subjectsTakenList = document.querySelector("#subjects-taken");
+
+        // DONE 2.2 Set the text of the second list item to "IT102 - Python Fundamentals"
         // Resource: https://www.javascripttutorial.net/javascript-dom/javascript-get-child-element/
+        const secondListItem = subjectsTakenList.children[1];
+        secondListItem.textContent = "IT102 - Python Fundamentals";
 
-        // Checkpoint 3.2 What is the difference between innerText, textContent, and innerHTML. When should you use one over the other?
+        // DONE 3.2 What is the difference between innerText, textContent, and innerHTML. When should you use one over the other?
         // Answer:
+        // innerText retrieves or sets the visible text content of an element, excluding hidden or styled elements, and is suitable 
+        // when dealing with the displayed text in a way that respects CSS styling. 
 
-        // Todo 2.3 Create another list item, and add it as a child of the unordered list
+        // textContent returns or modifies the raw text content of an element, including all text within, making it useful for 
+        // scenarios where you need the unprocessed, complete text content, even if hidden or styled. It enjoys widespread browser
+        // support and is a safer choice when working with the textual content of elements.
+
+        // innerHTML is used to get or set the HTML content of an element, including all HTML tags and nested elements. It is 
+        // particularly useful when you need to manipulate or extract HTML code directly. 
+
+
+        // DONE 2.3 Create another list item, and add it as a child of the unordered list
         //          Set the text of the list item to your favorite subject
         // Resource: https://www.javascripttutorial.net/dom/manipulating/create-a-dom-element/
+        const newItem = document.createElement('li');
+        const node = document.createTextNode("IT114L");
+        newItem.appendChild(node);
+        newItem.classList.add('newly-created');
+        newItem.setAttribute("id", "favorite-subject"); 
+        subjectsTakenList.appendChild(newItem);
+        
 
-        // Todo 2.4 Set the id attribute of the list item you created to "favorite-subject".
+        // DONE 2.4 Set the id attribute of the list item you created to "favorite-subject".
         //          Set the class of the list item to "newly-created"
+        newItem.setAttribute("class", "newly-created")
 
-        // Todo 2.5 Delete the third list item in the unordered list
+        // DONE 2.5 Delete the third list item in the unordered list
+        const thirdListItem = subjectsTakenList.children[2];
+        subjectsTakenList.removeChild(thirdListItem);
 
-        // Checkpoint 2.3 What is the difference between node and element?
+        // DONE Checkpoint 2.3 What is the difference between node and element?
         // Answer:
+        // A Node is a fundamental unit in the DOM hierarchy, encompassing elements, text nodes, and other entities, forming a 
+        // tree-like structure
+        // An Element specifically represents HTML or XML elements, providing properties and methods tailored for manipulating 
+        // document structure and content.
 
-        // Bonus Todo 2.6 Select the parent of the unordered list.
 
-        // Bonus Todo 2.7 Select the previous sibling of the list item you previously created
+        // Bonus DONE 2.6 Select the parent of the unordered list.
+        let parent = document.querySelector('body');
+        
+        // Bonus DONE 2.7 Select the previous sibling of the list item you previously created
+        const currentListItem = document.getElementById("favorite-subject");
+        const previousListItem = currentListItem.previousElementSibling;
+        console.log(previousListItem);
+
     </script>
 </body>
 
